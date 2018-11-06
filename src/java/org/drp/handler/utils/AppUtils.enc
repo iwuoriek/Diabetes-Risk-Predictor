@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.drp.handler.utils;
+
+import java.math.BigDecimal;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
+
+/**
+ *
+ * @author Osazee
+ */
+public class AppUtils {
+    private static Instances instances;
+    
+    private static final String HOME = System.getProperty("user.home") + "\\data\\";
+    
+    public static DataSource getTrainingData() throws Exception {
+        return new DataSource(HOME + "trainData.arff");
+    }
+    
+    public static DataSource getTestingData() throws Exception {
+        return new DataSource(HOME + "testData.arff");
+    }
+    
+    public static double calculateBMI(double weight, double height){
+        double weightKg = weight/2.20462;
+        double heightM = height/3.28084;
+        
+        return (weightKg/heightM)/heightM;
+    }
+    
+    public static double roundUp(double value){
+        BigDecimal bd = new BigDecimal(Double.toString(value * 100));
+        return bd.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+}
