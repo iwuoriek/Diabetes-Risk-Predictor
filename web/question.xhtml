@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="resources/template.css"></link>
+        <title>Risk Predictor</title>
+    </h:head>
+    <h:body>
+        <div class="content-div">
+            <br/><br/><br/>
+            <h:outputLabel class="font-dark">What is your risk score?</h:outputLabel>
+            <hr/>
+            <table width="100%">
+                <h:form>
+                    <tr>
+                        <td>
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Tell us your age:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.age}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Are you/have you been pregnant?</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter 0 if no, Number of times if yes.</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.pregnancies}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your height:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.height}"/>
+                                        <h:outputLabel class="font-dark label">ft</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your weight:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.weight}"/>
+                                        <h:outputLabel class="font-dark label">pounds</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your glucose level:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.glucose}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your insulin level:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.insulin}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your skin density/thickness, 0 if you are unsure:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.skinThickness}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your diabetes pedigree score:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.pedigree}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel class="font-dark label">Enter your blood pressure:</h:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 100px; padding-bottom: 50px;">
+                                        <h:inputText class="textField font-dark" value="#{dataBean.bloodPressure}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        <h:commandButton class="button font-light" value="Previous" action="test_home"/>
+                                    </td>
+                                    <td align="right">
+                                        <h:commandButton class="button font-light" style="width: 250px;" value="Calculate Risk Score" action="#{dataBean.predictScore()}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!--<td width="35%">
+                            <div>
+                                <p><h:outputLabel class="label font-light">Something deep and meaningful was supposed to be here.</h:outputLabel></p>
+                                <p><h:outputLabel class="label font-light">It'll come to me.</h:outputLabel></p>
+                            </div>
+                        </td>-->
+                    </tr>
+                </h:form>
+            </table>
+        </div>
+    </h:body>
+</html>
+
