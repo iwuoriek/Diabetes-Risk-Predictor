@@ -7,9 +7,12 @@ package org.drp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -43,6 +46,9 @@ public class UserData implements java.io.Serializable{
     private double pedigree;
     @Column(name="GLUCOSE")
     private double glucose;
+    @ManyToOne
+    @JoinColumn(name = "USER", nullable = true, foreignKey = @ForeignKey(name = "user_data_fk"))
+    private UserAccount user;
 
     /**
      * @return the id
@@ -196,6 +202,20 @@ public class UserData implements java.io.Serializable{
      */
     public void setGlucose(double glucose) {
         this.glucose = glucose;
+    }
+
+    /**
+     * @return the user
+     */
+    public UserAccount getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(UserAccount user) {
+        this.user = user;
     }
     
 }
