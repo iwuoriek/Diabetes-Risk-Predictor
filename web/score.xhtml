@@ -14,18 +14,52 @@
             <table width="100%">
                 <h:form>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <h:outputLabel class="label font-dark">Your risk score is...</h:outputLabel>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <h:outputText class="label font-dark" value="#{dataBean.riskScore}"/>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <h:outputText class="label font-dark" value="#{dataBean.message}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <h:outputLabel class="label font-dark" >Email</h:outputLabel>
+                        </td>
+                        <td width="80%">
+                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.email}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:commandButton class="button font-light" value="Search Patient" action="#{dataBean.searchUser()}"/> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <h:outputLabel class="label font-dark" >First name</h:outputLabel>
+                        </td>
+                        <td width="80%">
+                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.firstname}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <h:outputLabel class="label font-dark" >Last name</h:outputLabel>
+                        </td>
+                        <td width="80%">
+                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.surname}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:commandButton class="button font-light" value="Save Record" action="#{dataBean.saveRecord()}"/> 
                         </td>
                     </tr>
                 </h:form>
