@@ -8,6 +8,10 @@ package org.drp.model.dto;
 /**
  *
  * @author Osaki
+ * 
+ * A DTO (Data Transfer Object) class, to encapsulate and transfer data
+ * across multiple processes within the program reducing the level of coupling
+ * between classes.
  */
 public class UserDataDto {
     private int pregnancies;

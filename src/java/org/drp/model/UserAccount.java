@@ -15,6 +15,11 @@ import javax.persistence.Table;
 /**
  *
  * @author Osaki
+ * 
+ * An entity class modeled to be the blueprint for the database table UserAccount.
+ * Which holds information of the users/patients.
+ * Get and Set methods allow for interaction with the class without directly modifying
+ * class variables.
  */
 @Entity
 @Table(name="UserAccount")

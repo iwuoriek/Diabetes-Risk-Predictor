@@ -16,12 +16,19 @@ import weka.core.Instances;
 /**
  *
  * @author Kelechi
+ * 
+ * This class implements the prediction functions and calculates the diabetes
+ * risk score, making use of WEKA supervised machine learning libraries.
  */
 @Service
 public class PredictionModel {
 
     private static final double ERROR_CODE = 903.0;
     
+    /**
+     * @return returns the classifier for the training dataset
+     * @throws Exception to catch any system error that may result in classifying data
+     */
     private Classifier model() throws Exception {
         Instances trainData = AppUtils.getTrainingData().getDataSet();
         trainData.setClassIndex(trainData.numAttributes() - 1);
@@ -33,6 +40,11 @@ public class PredictionModel {
         return classifier;
     }
 
+    /**
+     * This method handles instance classification and calculates the risk score for the given user
+     * @param dto is the argument used to create the instance to be classified.
+     * @return the calculated risk score for the user, returns ERROR_CODE if invalid input is provided.
+     */
     public double predict(UserDataDto dto) {
         try {
             Instances trainData = AppUtils.getTrainingData().getDataSet();
@@ -63,21 +75,5 @@ public class PredictionModel {
             e.printStackTrace();
             return ERROR_CODE;
         }
-    }
-    
-    public static void main(String[] args) throws Exception{
-        UserDataDto dto = new UserDataDto();
-        dto.setAge(49);
-        dto.setBloodPressure(88);
-        dto.setWeight(175);
-        dto.setHeight(6.1);
-        dto.setBmi(AppUtils.calculateBMI(dto.getWeight(), dto.getHeight()));
-        dto.setGlucose(126);
-        dto.setInsulin(108);
-        dto.setPedigree(0.349);
-        dto.setPregnancies(8);
-        dto.setSkinThickness(36);
-        
-        System.out.println(new PredictionModel().predict(dto));
     }
 }

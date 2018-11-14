@@ -12,6 +12,9 @@ import weka.core.converters.ConverterUtils.DataSource;
 /**
  *
  * @author Osazee
+ * 
+ * This is an utilities class that provides functions/resources that can be reused
+ * throughout the program, eliminating code duplication and littering.
  */
 public class AppUtils {
     private static Instances instances;

@@ -18,6 +18,11 @@ import javax.persistence.Table;
 /**
  *
  * @author Osaki
+ * 
+ * An entity class modeled to be the blueprint for the database table UserData.
+ * Which stores information of health information entered by the user/patient.
+ * Get and Set methods allow for interaction with the class without directly modifying
+ * class variables.
  */
 @Entity
 @Table("UserData")

@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  *
  * @author Pramod
+ * 
+ * A service class to handle CRUD database transactions.
  */
 @Service
 @Transactional
@@ -29,6 +31,11 @@ public class UserDataHandler {
     @Autowired
     private UserAccountHandler userHandler;
     
+    /**
+     * Saves user's provided health information to the database table
+     * @param dto
+     * @return
+     */
     public String addData(UserDataDto dto){
         UserData userData = toUserData(dto);
         Session session = sessionFactory.getCurrentSession();
@@ -37,6 +44,11 @@ public class UserDataHandler {
         return "success";
     }
     
+    /**
+     * Get every provided record for a particular user in the database
+     * @param email
+     * @return 
+     */
     public List<UserData> getUserRecord(String email){
         UserAccount user = userHandler.getUser(email);
         if(user != null){
@@ -50,11 +62,20 @@ public class UserDataHandler {
         }
     }
     
+    /**
+     * Get every provided record in the database
+     * @return 
+     */
     public List<UserData> getDataList(){
         List<UserData> dataList = sessionFactory.getCurrentSession().createQuery("FROM UserData").list();
         return dataList;
     }
     
+    /**
+     * Converts a DTO (Data Transfer Object) to an Entity to be saved in database.
+     * @param dto
+     * @return 
+     */
     private UserData toUserData(UserDataDto dto){
         UserData userData = new UserData();
         userData.setAge(dto.getAge());

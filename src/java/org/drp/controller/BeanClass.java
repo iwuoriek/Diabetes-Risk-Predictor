@@ -5,24 +5,14 @@
  */
 package org.drp.controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-import org.drp.handler.UserDataHandler;
-import org.drp.handler.algorithm.PredictionModel;
-import org.drp.handler.utils.AppUtils;
-import org.drp.model.dto.UserDataDto;
-import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  *
- * @author Osazee
+ * @author Kelechi
+ * 
+ * This class can never be instantiated by another class.
+ * Attributes of this class can only be used via inheritance.
  */
-@Named("dataBean")
-@SessionScoped
-public class UserDataController implements java.io.Serializable{
-
+public abstract class BeanClass{
     private int pregnancies;
     private double height;
     private double weight;
@@ -35,49 +25,6 @@ public class UserDataController implements java.io.Serializable{
     private double glucose;
     private double riskScore;
     private String message;
-
-    @Autowired
-    private UserDataHandler handler;
-    @Autowired
-    private PredictionModel model;
-    
-    public String predictScore(){
-        UserDataDto dto = new UserDataDto();
-        dto.setAge(age);
-        dto.setBloodPressure(bloodPressure);
-        dto.setBmi(AppUtils.calculateBMI(weight, height));
-        dto.setGlucose(glucose);
-        dto.setHeight(height);
-        dto.setInsulin(insulin);
-        dto.setPedigree(pedigree);
-        dto.setPregnancies(pregnancies);
-        dto.setSkinThickness(skinThickness);
-        dto.setWeight(weight);
-        
-        System.out.println("Data" + dto.toString());
-        handler.addData(dto);
-        
-        setRiskScore(model.predict(dto));
-        setMessage(resultMessage(model.predict(dto)));
-        return "score?faces-redirect=true";
-    }
-    
-    public String pageFlow(int indicator){
-        String[] page = {"flow1", "flow2", "flow3", "flow4", "flow5"};
-        return page[indicator];
-    }
-    
-    public String resultMessage(double riskScore){
-        if (riskScore <= 30) {
-            return "LOW :)";
-        } else if (riskScore > 30 && riskScore < 50){
-            return "SOMEWHAT LOW :|";
-        } else if (riskScore >= 50 && riskScore <= 100){
-            return "HIGH :(";
-        } else {
-            return "Opps there is a problem with the system :(";
-        }
-    }
     
     public int getPregnancies() {
         return pregnancies;
