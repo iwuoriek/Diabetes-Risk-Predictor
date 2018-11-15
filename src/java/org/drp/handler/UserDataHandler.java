@@ -8,6 +8,7 @@ package org.drp.handler;
 import java.util.List;
 import org.drp.model.UserAccount;
 import org.drp.model.UserData;
+import org.drp.model.dto.UserAccountDto;
 import org.drp.model.dto.UserDataDto;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,12 +35,18 @@ public class UserDataHandler {
     /**
      * Saves user's provided health information to the database table
      * @param dto
+     * @param userDto
      * @return
      */
-    public String addData(UserDataDto dto){
+    public String addData(UserDataDto dto, UserAccountDto userDto){
+        UserAccount user = userHandler.getUser(userDto.getEmail());
         UserData userData = toUserData(dto);
-        Session session = sessionFactory.getCurrentSession();
-        session.save(userData);
+        if (user == null){
+            userHandler.saveUser(userDto);
+            user = userHandler.getUser(userDto.getEmail());
+        }
+        userData.setUser(user);
+        sessionFactory.getCurrentSession().save(userData);
         
         return "success";
     }

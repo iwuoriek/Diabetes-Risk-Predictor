@@ -52,7 +52,7 @@ public class UserData implements java.io.Serializable{
     @Column(name="GLUCOSE")
     private double glucose;
     @ManyToOne
-    @JoinColumn(name = "USER", nullable = true, foreignKey = @ForeignKey(name = "user_data_fk"))
+    @JoinColumn(name = "USER_ID", nullable = true)
     private UserAccount user;
 
     /**
