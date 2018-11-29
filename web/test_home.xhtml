@@ -6,9 +6,30 @@
         <link type="text/css" rel="stylesheet" href="resources/template.css"></link>
         <title>Risk Predictor</title>
     </h:head>
-    <h:body>
-        <div class="content-div">
-            <h:button class="font-light button" style="width: 200px; height: 80px; font-size: 40px;" value="BEGIN TEST" outcome="question"/>
+    <h:body class="body">
+        <div>
+            <div class="content-div">
+                <h:button class="font-light button" style="width: 200px; height: 80px; font-size: 40px;" value="BEGIN TEST" outcome="question"/>
+            </div>
+            <div class="content-div">
+                <table>
+                    <h:form>
+                        <tr>
+                            <td>
+                                <h:outputLabel class="label font-dark" >Email</h:outputLabel>
+                            </td>
+                            <td>
+                                <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.email}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h:commandButton class="button font-light" style="width: 200px;" value="View Development" action="#{dataBean.userDevelopment()}"/> 
+                            </td>
+                        </tr>
+                    </h:form>
+                </table>
+            </div>
         </div>
     </h:body>
 </html>

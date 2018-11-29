@@ -24,6 +24,7 @@ public class UserDataDto {
     private int bloodPressure;
     private double pedigree;
     private double glucose;
+    private double riskScore;
 
     /**
      * @return the pregnancies
@@ -164,10 +165,23 @@ public class UserDataDto {
     public void setGlucose(double glucose) {
         this.glucose = glucose;
     }
+
+    /**
+     * @return the riskScore
+     */
+    public double getRiskScore() {
+        return riskScore;
+    }
+
+    /**
+     * @param riskScore the riskScore to set
+     */
+    public void setRiskScore(double riskScore) {
+        this.riskScore = riskScore;
+    }
     
     @Override
     public String toString(){
-        return "[" + pregnancies + "," + glucose + "," + bloodPressure + "," + skinThickness + "," + insulin + "," + bmi + "," + pedigree + "," + age + "]";
+        return "[" + pregnancies + "," + glucose + "," + bloodPressure + "," + skinThickness + "," + insulin + "," + bmi + "," + pedigree + "," + age + "," + riskScore + "]";
     }
-    
 }
