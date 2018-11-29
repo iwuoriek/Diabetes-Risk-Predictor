@@ -10,9 +10,11 @@ package org.drp.controller;
  * @author Kelechi
  * 
  * This class can never be instantiated by another class.
- * Attributes of this class can only be used via inheritance.
+ * Attributes of this class can only be used via inheritance,
+ * and are used by the controller class to interact with the User Interface
  */
 public abstract class BeanClass{
+
     private int pregnancies;
     private double height;
     private double weight;
@@ -25,6 +27,11 @@ public abstract class BeanClass{
     private double glucose;
     private double riskScore;
     private String message;
+    private String email;
+    private String firstname;
+    private String surname;
+    private String validationMessage;
+    private String errorMessage;
     
     public int getPregnancies() {
         return pregnancies;
@@ -117,7 +124,60 @@ public abstract class BeanClass{
     public String getMessage() {
         return message;
     }
+    
     public void setMessage(String message) {
         this.message = message;
+    }
+  
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    /**
+     * @return the validationMessage
+     */
+    public String getValidationMessage() {
+        return validationMessage;
+    }
+
+    /**
+     * @param validationMessage the validationMessage to set
+     */
+    public void setValidationMessage(String validationMessage) {
+        this.validationMessage = validationMessage;
+    }
+
+    /**
+     * @return the errorMessage
+     */
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    /**
+     * @param errorMessage the errorMessage to set
+     */
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }
