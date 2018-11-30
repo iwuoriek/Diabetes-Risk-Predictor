@@ -6,64 +6,106 @@
         <link type="text/css" rel="stylesheet" href="resources/template.css"></link>
         <title>Risk Predictor</title>
     </h:head>
-    <h:body>
-        <div class="content-div">
-            <br/><br/><br/>
-            <h:outputLabel class="font-dark">What is your risk score?</h:outputLabel>
-            <hr/>
-            <table width="100%">
-                <h:form>
+    <h:body class="body">
+        <div>
+            <div class="content-div">
+                <br/><br/><br/>
+                <h:outputLabel class="font-dark">What is your risk score?</h:outputLabel>
+                <hr/>
+                <table width="100%">
                     <tr>
-                        <td colspan="2">
-                            <h:outputLabel class="label font-dark">Your risk score is...</h:outputLabel>
+                        <td width="40%">
+                            <table width="100%">
+                                <h:form>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h:outputLabel class="label font-dark">Your risk score is...</h:outputLabel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div style="width: 150px; height: 150px; border-radius: 200px; margin-top: 20px; background-color: #928e9a; text-align: center; t">
+                                                <br/><br/>
+                                                <h:outputText class="label font-light" style="font-size: 50px;" value="#{dataBean.riskScore}"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h:outputText class="label font-dark" value="#{dataBean.message}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h:outputLabel class="label font-dark" >Email</h:outputLabel>
+                                        </td>
+                                        <td>
+                                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.email}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><h:outputLabel class="label warning">#{dataBean.validationMessage}</h:outputLabel></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h:commandButton class="button font-light" style="width: 150px;" value="Search Patient" action="#{dataBean.searchUser()}"/> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h:outputLabel class="label font-dark" >First name</h:outputLabel>
+                                        </td>
+                                        <td>
+                                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.firstname}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h:outputLabel class="label font-dark" >Last name</h:outputLabel>
+                                        </td>
+                                        <td>
+                                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.surname}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h:commandButton class="button font-light" style="width: 150px;" value="Save Record" action="#{dataBean.saveRecord()}"/> 
+                                        </td>
+                                    </tr>
+                                </h:form>
+                            </table>
+                        </td>
+                        <td width="60%" valign="top">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h3 class="font-dark">Factors that could significantly affect risk score.</h3>
+                                        <ul>
+                                            <li class="font-dark">Blood Glucose</li>
+                                            <li class="font-dark">Insulin Acceptance</li>
+                                            <li class="font-dark">Body Mass Index (BMI)</li>
+                                            <li class="font-dark">Pedigree Function</li>
+                                        </ul>
+                                        <h3 class="font-dark">Info:</h3>
+                                        <ul>
+                                            <li class="font-dark">Increase in BMI can lead to decrease in Insulin acceptance.</li>
+                                            <li class="font-dark">Decrease in Insulin acceptance can result in increased levels in Blood Glucose.</li>
+                                            <li class="font-dark">Increase in Blood Glucose causes increase BMI exposing user to the risk of becoming overweight/obese.</li>
+                                        </ul>
+                                        <h3 class="font-dark">Advice:</h3>
+                                        <ul>
+                                            <li class="font-dark">Proper exercise and adequate meal plan to control glucose intake and BMI.</li>
+                                            <li class="font-dark">Regular checkup and monitoring of insulin sensitivity level.</li>
+                                            <li class="font-dark">Pedigree function may not threaten risk if other factors are properly managed.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2">
-                            <h:outputText class="label font-dark" value="#{dataBean.riskScore}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <h:outputText class="label font-dark" value="#{dataBean.message}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <h:outputLabel class="label font-dark" >Email</h:outputLabel>
-                        </td>
-                        <td width="80%">
-                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.email}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <h:commandButton class="button font-light" value="Search Patient" action="#{dataBean.searchUser()}"/> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <h:outputLabel class="label font-dark" >First name</h:outputLabel>
-                        </td>
-                        <td width="80%">
-                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.firstname}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <h:outputLabel class="label font-dark" >Last name</h:outputLabel>
-                        </td>
-                        <td width="80%">
-                            <h:inputText class="textField font-dark" style="width: 150px;" value="#{dataBean.surname}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <h:commandButton class="button font-light" value="Save Record" action="#{dataBean.saveRecord()}"/> 
-                        </td>
-                    </tr>
-                </h:form>
-            </table>
+                </table>
+            </div>
         </div>
     </h:body>
 </html>
