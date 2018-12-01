@@ -32,8 +32,10 @@ public class AppUtils {
     public static double calculateBMI(double weight, double height){
         double weightKg = weight/2.20462;
         double heightM = height/3.28084;
+        double bmi = weightKg/(heightM * heightM);
         
-        return (weightKg/heightM)/heightM;
+        BigDecimal bd = new BigDecimal(Double.toString(bmi));
+        return bd.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
     
     public static double roundUp(double value){
