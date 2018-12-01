@@ -51,6 +51,8 @@ public class UserData implements java.io.Serializable{
     private double pedigree;
     @Column(name="GLUCOSE")
     private double glucose;
+    @Column(name="RISK_SCORE")
+    private double riskScore;
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = true)
     private UserAccount user;
@@ -207,6 +209,20 @@ public class UserData implements java.io.Serializable{
      */
     public void setGlucose(double glucose) {
         this.glucose = glucose;
+    }
+    
+    /**
+     * @return the riskScore
+     */
+    public double getRiskScore() {
+        return riskScore;
+    }
+
+    /**
+     * @param riskScore the riskScore to set
+     */
+    public void setRiskScore(double riskScore) {
+        this.riskScore = riskScore;
     }
 
     /**
