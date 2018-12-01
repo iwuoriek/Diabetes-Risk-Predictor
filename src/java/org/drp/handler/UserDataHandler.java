@@ -10,9 +10,7 @@ import org.drp.model.UserAccount;
 import org.drp.model.UserData;
 import org.drp.model.dto.UserAccountDto;
 import org.drp.model.dto.UserDataDto;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,8 +58,8 @@ public class UserDataHandler {
         UserAccount user = userHandler.getUser(email);
         if(user != null){
             List<UserData> userRecord = sessionFactory.getCurrentSession()
-                    .createCriteria(UserAccount.class)
-                    .add(Restrictions.like("user", user))
+                    .createQuery("FROM UserData WHERE USER_ID = :userId")
+                    .setParameter("userId", user.getId())
                     .list();
             return userRecord;
         } else {
@@ -95,6 +93,7 @@ public class UserDataHandler {
         userData.setPregnancies(dto.getPregnancies());
         userData.setSkinThickness(dto.getSkinThickness());
         userData.setWeight(dto.getWeight());
+        userData.setRiskScore(dto.getRiskScore());
         return userData;
     }
 }
